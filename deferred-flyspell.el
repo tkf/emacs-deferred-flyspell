@@ -66,6 +66,7 @@ LOCAL will be passed to `remove-hook' and `add-hook'."
   (add-hook 'post-command-hook 'flyspell-post-command-hook nil local)
   (remove-hook 'post-command-hook 'deferred-flyspell:post-command-hook local))
 
+;;;###autoload
 (defun deferred-flyspell:auto-setup ()
   "Setup deferred-flyspell.  Called via `flyspell-mode-hook'."
   (when deferred-flyspell:auto-setup
