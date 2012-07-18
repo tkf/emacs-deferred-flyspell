@@ -21,7 +21,13 @@
 
 ;;; Commentary:
 
-;;
+;; Entry points:
+
+;; 1. C-u M-x deferred-flyspell:install-hooks
+;;    to use deferred-flyspell in the current buffer.
+
+;; 2. Put `(deferred-flyspell:config)' in Emacs setup to automatically
+;;    setup deferred-flyspell via `flyspell-mode-hook'.
 
 ;;; Code:
 
@@ -43,6 +49,7 @@
           (let ((this-command this-command))
             (flyspell-post-command-hook)))))))
 
+;;;###autoload
 (defun deferred-flyspell:install-hooks (&rest local)
   "Install `deferred-flyspell:post-command-hook' and remove
 the original `flyspell-post-command-hook'.
@@ -64,6 +71,7 @@ LOCAL will be passed to `remove-hook' and `add-hook'."
   (when deferred-flyspell:auto-setup
     (deferred-flyspell:install-hooks t)))
 
+;;;###autoload
 (defun deferred-flyspell:config ()
   "Add `deferred-flyspell:auto-setup' to `flyspell-mode-hook'."
   (interactive)
